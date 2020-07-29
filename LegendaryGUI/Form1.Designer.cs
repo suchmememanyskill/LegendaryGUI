@@ -66,11 +66,10 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnl_notInstalled = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lv_notInstalled = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnl_allgames = new System.Windows.Forms.Panel();
             this.lv_allGames = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -473,51 +472,45 @@
             // pnl_notInstalled
             // 
             this.pnl_notInstalled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pnl_notInstalled.Controls.Add(this.listView1);
+            this.pnl_notInstalled.Controls.Add(this.lv_notInstalled);
             this.pnl_notInstalled.Location = new System.Drawing.Point(113, 0);
             this.pnl_notInstalled.Name = "pnl_notInstalled";
             this.pnl_notInstalled.Size = new System.Drawing.Size(858, 520);
             this.pnl_notInstalled.TabIndex = 3;
             // 
-            // listView1
+            // lv_notInstalled
             // 
-            this.listView1.BackColor = System.Drawing.Color.DimGray;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lv_notInstalled.BackColor = System.Drawing.Color.DimGray;
+            this.lv_notInstalled.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.ForeColor = System.Drawing.Color.White;
-            this.listView1.FullRowSelect = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 54);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(855, 463);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.columnHeader3});
+            this.lv_notInstalled.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_notInstalled.ForeColor = System.Drawing.Color.White;
+            this.lv_notInstalled.FullRowSelect = true;
+            this.lv_notInstalled.HideSelection = false;
+            this.lv_notInstalled.Location = new System.Drawing.Point(0, 54);
+            this.lv_notInstalled.MultiSelect = false;
+            this.lv_notInstalled.Name = "lv_notInstalled";
+            this.lv_notInstalled.Size = new System.Drawing.Size(855, 463);
+            this.lv_notInstalled.TabIndex = 0;
+            this.lv_notInstalled.UseCompatibleStateImageBehavior = false;
+            this.lv_notInstalled.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Name";
-            this.columnHeader1.Width = 270;
+            this.columnHeader1.Width = 320;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "AppName";
-            this.columnHeader2.Width = 150;
+            this.columnHeader2.Width = 230;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Version";
             this.columnHeader3.Width = 270;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Size";
-            this.columnHeader4.Width = 140;
             // 
             // pnl_allgames
             // 
@@ -568,9 +561,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(964, 670);
+            this.Controls.Add(this.pnl_notInstalled);
             this.Controls.Add(this.pnl_forceLaunch);
             this.Controls.Add(this.pnl_allgames);
-            this.Controls.Add(this.pnl_notInstalled);
             this.Controls.Add(this.rtb_console);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnl_home);
@@ -609,11 +602,10 @@
         private System.Windows.Forms.Button btn_home_verInfo;
         private System.Windows.Forms.Panel pnl_forceLaunch;
         private System.Windows.Forms.Panel pnl_notInstalled;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lv_notInstalled;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Panel pnl_allgames;
         private System.Windows.Forms.ListView lv_allGames;
         private System.Windows.Forms.ColumnHeader columnHeader5;

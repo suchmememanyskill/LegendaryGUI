@@ -10,7 +10,7 @@ namespace LegendaryGUI.GameList
     {
         public List<GameInfo> Games { get; protected set; }
         protected ListViewSafeWriter lv;
-        protected string args = "";
+        public string args = "";
 
         public GamesLister(ListViewSafeWriter lv)
         {
@@ -30,7 +30,7 @@ namespace LegendaryGUI.GameList
             ListWriter();
         }
 
-        private void Parser(LaunchProcess proc)
+        public void Parser(LaunchProcess proc)
         {
             Games = new List<GameInfo>();
             foreach (string line in proc.Output)

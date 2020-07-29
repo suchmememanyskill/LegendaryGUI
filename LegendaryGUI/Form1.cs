@@ -14,8 +14,9 @@ namespace LegendaryGUI
 {
     public partial class Form1 : Form
     {
-        AllGamesLister allGamesLister;
+        GamesLister allGamesLister;
         GamesLister installedGamesLister;
+        NotInstalledGamesLister notInstalledGamesLister;
 
         public Form1()
         {
@@ -33,6 +34,7 @@ namespace LegendaryGUI
 
             allGamesLister = new AllGamesLister(new ListViewSafeWriter(lv_allGames));
             installedGamesLister = new InstalledGamesLister(new ListViewSafeWriter(installed_lv));
+            notInstalledGamesLister = new NotInstalledGamesLister(allGamesLister, installedGamesLister, new ListViewSafeWriter(lv_notInstalled));
         }
 
         private void HideAllPanels()
@@ -126,7 +128,11 @@ namespace LegendaryGUI
 
         private void mi_notInstalled_Click(object sender, EventArgs e)
         {
+            HideAllPanels();
+            pnl_notInstalled.Show();
+            mi_notInstalled.BackColor = Color.FromKnownColor(KnownColor.Highlight);
 
+            notInstalledGamesLister.RefreshListing(false);
         }
 
         private void btn_forceLaunch_Add_Click(object sender, EventArgs e)

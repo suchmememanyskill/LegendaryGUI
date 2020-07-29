@@ -86,6 +86,7 @@
     <Compile Include="GameList\AllGamesLister.cs" />
     <Compile Include="GameList\GamesLister.cs" />
     <Compile Include="GameList\InstalledGamesLister.cs" />
+    <Compile Include="GameList\NotInstalledGamesLister.cs" />
     <Compile Include="LaunchProcess.cs" />
     <Compile Include="ListViewSafeWriter.cs" />
     <Compile Include="Program.cs" />
