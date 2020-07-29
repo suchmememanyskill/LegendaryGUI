@@ -1,2 +1,2 @@
 # LegendaryGUI
-A simple gui for Legendary
+A simple gui for [Legendary](https://github.com/derrod/legendary)
