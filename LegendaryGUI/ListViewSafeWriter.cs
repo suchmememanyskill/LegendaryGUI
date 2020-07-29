@@ -9,37 +9,37 @@ namespace LegendaryGUI
 {
     public class ListViewSafeWriter
     {
-        private ListView listView;
+        public ListView ListView { get; private set; }
         private delegate void SafeCallAdd(ListViewItem item);
         private delegate void SafeCall();
 
         public ListViewSafeWriter(ListView lv)
         {
-            listView = lv;
+            ListView = lv;
         }
 
         public void Add(ListViewItem item)
         {
-            if (listView.InvokeRequired)
+            if (ListView.InvokeRequired)
             {
                 var d = new SafeCallAdd(Add);
-                listView.Invoke(d, new object[] { item });
+                ListView.Invoke(d, new object[] { item });
             }
             else
             {
-                listView.Items.Add(item);
+                ListView.Items.Add(item);
             }
         }
         public void Clear()
         {
-            if (listView.InvokeRequired)
+            if (ListView.InvokeRequired)
             {
                 var d = new SafeCall(Clear);
-                listView.Invoke(d);
+                ListView.Invoke(d);
             }
             else
             {
-                listView.Items.Clear();
+                ListView.Items.Clear();
             }
         }
     }

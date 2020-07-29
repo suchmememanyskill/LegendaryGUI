@@ -8,11 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LegendaryGUI.GameList;
 
 namespace LegendaryGUI
 {
     public partial class Form1 : Form
     {
+        AllGamesLister allGamesLister;
+        GamesLister installedGamesLister;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +30,9 @@ namespace LegendaryGUI
             if (proc.Output.Count > 0)
                 if (proc.Output[0].StartsWith("modded legendary"))
                     mi_forceLaunch.Visible = true;
+
+            allGamesLister = new AllGamesLister(new ListViewSafeWriter(lv_allGames));
+            installedGamesLister = new InstalledGamesLister(new ListViewSafeWriter(installed_lv));
         }
 
         private void HideAllPanels()
@@ -64,35 +71,7 @@ namespace LegendaryGUI
             pnl_installed.Show();
             mi_Installed.BackColor = Color.FromKnownColor(KnownColor.Highlight);
 
-            LaunchProcess proc = new LaunchProcess("list-installed");
-            proc.ReturnFunc = HandleInstalledOutput;
-            proc.Run();
-        }
-
-        private void HandleInstalledOutput(LaunchProcess proc)
-        {
-            List<GameInfo> games = new List<GameInfo>();
-            foreach (string line in proc.Output)
-            {
-                if (line.StartsWith(" *"))
-                {
-                    games.Add(new GameInfo(line, true));
-                }
-            }
-
-            ListViewSafeWriter lv = new ListViewSafeWriter(installed_lv);
-            lv.Clear();
-
-            foreach (GameInfo info in games)
-            {
-                ListViewItem li = new ListViewItem(info.Name);
-                li.SubItems.Add(info.AppName);
-                li.SubItems.Add(info.Version);
-                li.SubItems.Add(info.Size);
-                lv.Add(li);
-            }
-
-            FormConsole.WriteLine("Parsing done!");
+            installedGamesLister.RefreshListing(false);
         }
 
         private void installed_lv_SelectedIndexChanged(object sender, EventArgs e)
@@ -180,40 +159,13 @@ namespace LegendaryGUI
             lbl_forceLaunch_status.Text = "Status: Added";
         }
 
-        private void HandleAllGamesOutput(LaunchProcess proc)
-        {
-            List<GameInfo> games = new List<GameInfo>();
-            foreach (string line in proc.Output)
-            {
-                if (line.StartsWith(" *"))
-                {
-                    games.Add(new GameInfo(line, false));
-                }
-            }
-
-            ListViewSafeWriter lv = new ListViewSafeWriter(lv_allGames);
-            lv.Clear();
-
-            foreach (GameInfo info in games)
-            {
-                ListViewItem li = new ListViewItem(info.Name);
-                li.SubItems.Add(info.AppName);
-                li.SubItems.Add(info.Version);
-                lv.Add(li);
-            }
-
-            FormConsole.WriteLine("Parsing done!");
-        }
-
         private void mi_allgames_Click(object sender, EventArgs e)
         {
             HideAllPanels();
             pnl_allgames.Show();
             mi_allgames.BackColor = Color.FromKnownColor(KnownColor.Highlight);
 
-            LaunchProcess proc = new LaunchProcess($"list-games");
-            proc.ReturnFunc = HandleAllGamesOutput;
-            proc.Run();
+            allGamesLister.RefreshListing(false);
         }
 
         private void btn_forceLaunch_remove_Click(object sender, EventArgs e)

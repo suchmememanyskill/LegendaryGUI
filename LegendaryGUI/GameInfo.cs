@@ -17,12 +17,12 @@ namespace LegendaryGUI
 
     public class GameInfo : GameInfoBase
     {
-        public GameInfo(string inLine, bool isInstalled)
+        public GameInfo(string inLine)
         {
-            Parse(inLine, isInstalled);
+            Parse(inLine);
         }
 
-        private void Parse(string inLine, bool isInstalled)
+        private void Parse(string inLine)
         {
             string noStars = inLine.Replace('*', ' ');
             string noSpaces = noStars.Trim();
@@ -33,7 +33,7 @@ namespace LegendaryGUI
             string[] argsSplit = args.Split('|');
             AppName = argsSplit[0].Substring(argsSplit[0].IndexOf(':') + 1).Trim();
             Version = argsSplit[1].Substring(argsSplit[1].IndexOf(':') + 1).Trim();
-            if (isInstalled)
+            if (argsSplit.Length > 2)
                 Size = argsSplit[2].Substring(argsSplit[2].IndexOf(':') + 1).Trim();
         }
     }
