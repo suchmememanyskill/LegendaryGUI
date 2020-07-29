@@ -205,7 +205,7 @@ namespace LegendaryGUI
         {
             string toLaunch = lv_forceLaunch.SelectedItems[0].SubItems[1].Text;
             string gamePath = lv_forceLaunch.SelectedItems[0].SubItems[4].Text;
-            LaunchProcess proc = new LaunchProcess($"force-launch {toLaunch} {gamePath}");
+            LaunchProcess proc = new LaunchProcess($"force-launch {toLaunch} \"{gamePath}\"");
             proc.Run();
         }
     }
