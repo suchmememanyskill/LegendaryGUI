@@ -208,5 +208,15 @@ namespace LegendaryGUI
             LaunchProcess proc = new LaunchProcess($"force-launch {toLaunch} \"{gamePath}\"");
             proc.Run();
         }
+
+        private void file_chooseForceLaunchTarget_FileOk(object sender, CancelEventArgs e)
+        {
+            tb_path.Text = file_chooseForceLaunchTarget.FileName;
+        }
+
+        private void btn_forceLaunch_browse_Click(object sender, EventArgs e)
+        {
+            file_chooseForceLaunchTarget.ShowDialog();
+        }
     }
 }

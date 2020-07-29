@@ -75,6 +75,8 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.file_chooseForceLaunchTarget = new System.Windows.Forms.OpenFileDialog();
+            this.btn_forceLaunch_browse = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnl_installed.SuspendLayout();
             this.pnl_home.SuspendLayout();
@@ -252,6 +254,7 @@
             // pnl_forceLaunch
             // 
             this.pnl_forceLaunch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnl_forceLaunch.Controls.Add(this.btn_forceLaunch_browse);
             this.pnl_forceLaunch.Controls.Add(this.btn_forceLaunch_launch);
             this.pnl_forceLaunch.Controls.Add(this.btn_forceLaunch_remove);
             this.pnl_forceLaunch.Controls.Add(this.lbl_forceLaunch_status);
@@ -376,7 +379,7 @@
             this.tb_path.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_path.Location = new System.Drawing.Point(119, 121);
             this.tb_path.Name = "tb_path";
-            this.tb_path.Size = new System.Drawing.Size(199, 22);
+            this.tb_path.Size = new System.Drawing.Size(136, 22);
             this.tb_path.TabIndex = 7;
             // 
             // tb_size
@@ -555,14 +558,32 @@
             this.columnHeader7.Text = "Version";
             this.columnHeader7.Width = 270;
             // 
+            // file_chooseForceLaunchTarget
+            // 
+            this.file_chooseForceLaunchTarget.Title = "Choose a .exe";
+            this.file_chooseForceLaunchTarget.FileOk += new System.ComponentModel.CancelEventHandler(this.file_chooseForceLaunchTarget_FileOk);
+            // 
+            // btn_forceLaunch_browse
+            // 
+            this.btn_forceLaunch_browse.BackColor = System.Drawing.Color.White;
+            this.btn_forceLaunch_browse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_forceLaunch_browse.ForeColor = System.Drawing.Color.Black;
+            this.btn_forceLaunch_browse.Location = new System.Drawing.Point(261, 121);
+            this.btn_forceLaunch_browse.Name = "btn_forceLaunch_browse";
+            this.btn_forceLaunch_browse.Size = new System.Drawing.Size(57, 22);
+            this.btn_forceLaunch_browse.TabIndex = 16;
+            this.btn_forceLaunch_browse.Text = "Browse";
+            this.btn_forceLaunch_browse.UseVisualStyleBackColor = false;
+            this.btn_forceLaunch_browse.Click += new System.EventHandler(this.btn_forceLaunch_browse_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(964, 670);
-            this.Controls.Add(this.pnl_notInstalled);
             this.Controls.Add(this.pnl_forceLaunch);
+            this.Controls.Add(this.pnl_notInstalled);
             this.Controls.Add(this.pnl_allgames);
             this.Controls.Add(this.rtb_console);
             this.Controls.Add(this.menuStrip1);
@@ -633,6 +654,8 @@
         private System.Windows.Forms.Label lbl_forceLaunch_status;
         private System.Windows.Forms.Button btn_forceLaunch_launch;
         private System.Windows.Forms.Button btn_forceLaunch_remove;
+        private System.Windows.Forms.OpenFileDialog file_chooseForceLaunchTarget;
+        private System.Windows.Forms.Button btn_forceLaunch_browse;
     }
 }
 
