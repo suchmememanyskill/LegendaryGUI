@@ -13,6 +13,7 @@ namespace LegendaryGUI
         public string AppName { get; set; }
         public string Version { get; set; }
         public string Size { get; set; }
+        public bool Update { get; set; }
     }
 
     public class GameInfo : GameInfoBase

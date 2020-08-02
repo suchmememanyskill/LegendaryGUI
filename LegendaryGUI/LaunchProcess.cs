@@ -38,6 +38,11 @@ namespace LegendaryGUI
             return isRunning;
         }
 
+        public virtual void WriteRunStatus(bool status)
+        {
+            isRunning = status;
+        }
+
         public int Run()
         {
             if (CheckRunStatus())
@@ -47,7 +52,7 @@ namespace LegendaryGUI
                 return -1;
             }
 
-            isRunning = true;
+            WriteRunStatus(true);
 
             ProcessStartInfo start = new ProcessStartInfo();
             start.Arguments = Arguments;
@@ -124,7 +129,7 @@ namespace LegendaryGUI
             {
                 ReturnFunc?.Invoke(this);
             }
-            isRunning = false;
+            WriteRunStatus(false);
             HasProcessFinished = true;
         }
     }
@@ -134,6 +139,11 @@ namespace LegendaryGUI
         public override bool CheckRunStatus()
         {
             return false;
+        }
+
+        public override void WriteRunStatus(bool status)
+        {
+            return;
         }
 
         public LaunchProcessMT(string args)

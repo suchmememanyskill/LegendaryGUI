@@ -12,7 +12,7 @@ namespace LegendaryGUI.GameList
         public InstalledGamesLister(ListViewSafeWriter lv)
             : base(lv)
         {
-            args = "list-installed";
+            args = "list-installed --check-updates";
         }
 
         public override void ListWriter()
@@ -25,6 +25,7 @@ namespace LegendaryGUI.GameList
                 li.SubItems.Add(info.AppName);
                 li.SubItems.Add(info.Version);
                 li.SubItems.Add(info.Size);
+                li.SubItems.Add(info.Update ? "Yes" : "No");
                 lv.Add(li);
             }
         }

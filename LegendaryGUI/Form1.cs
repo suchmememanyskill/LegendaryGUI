@@ -137,7 +137,8 @@ namespace LegendaryGUI
             pnl_notInstalled.Show();
             mi_notInstalled.BackColor = Color.FromKnownColor(KnownColor.Highlight);
 
-            notInstalledGamesLister.RefreshListing(false);
+            btn_notInstalledInstall.Enabled = false;
+            notInstalledGamesLister.RefreshListing();
         }
 
         private void btn_forceLaunch_Add_Click(object sender, EventArgs e)
@@ -238,6 +239,48 @@ namespace LegendaryGUI
             Config.config.InstallFolder = tb_home_installLoc.Text;
             Config.Write();
             FormConsole.WriteLine("<Configuration saved!>");
+        }
+
+        bool installing = false;
+
+        private void GameInstallFinished(LaunchProcess proc)
+        {
+            installedGamesLister.RefreshListing(true);
+            notInstalledGamesLister.RefreshListing();
+
+            installing = false;
+            MessageBox.Show("Install finished", "Game installer");
+        }
+
+        private void btn_notInstalledInstall_Click(object sender, EventArgs e)
+        {
+            if (installing)
+            {
+                MessageBox.Show("There is already a program being installed!", "Warning: Game installer");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(tb_home_installLoc.Text))
+            {
+                MessageBox.Show("No default install path set. Set one in home");
+                return;
+            }
+
+            installing = true;
+
+            string game = lv_notInstalled.SelectedItems[0].SubItems[1].Text;
+
+            LaunchProcessMT launchProcessMT = new LaunchProcessMT($"-y install {game} --base-path \"{tb_home_installLoc.Text}\"");
+            launchProcessMT.ReturnFunc = GameInstallFinished;
+            launchProcessMT.Run();
+        }
+
+        private void lv_notInstalled_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lv_notInstalled.SelectedItems.Count >= 1)
+                btn_notInstalledInstall.Enabled = true;
+            else
+                btn_notInstalledInstall.Enabled = false;
         }
     }
 }

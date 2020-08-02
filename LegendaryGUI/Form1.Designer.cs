@@ -42,6 +42,7 @@
             this.Col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Col4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnl_home = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_homeBrowse = new System.Windows.Forms.Button();
@@ -72,6 +73,7 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnl_notInstalled = new System.Windows.Forms.Panel();
+            this.btn_notInstalledInstall = new System.Windows.Forms.Button();
             this.lv_notInstalled = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -202,7 +204,8 @@
             this.Col1,
             this.Col2,
             this.Col3,
-            this.Col4});
+            this.Col4,
+            this.columnHeader4});
             this.installed_lv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.installed_lv.ForeColor = System.Drawing.Color.White;
             this.installed_lv.FullRowSelect = true;
@@ -219,22 +222,27 @@
             // Col1
             // 
             this.Col1.Text = "Name";
-            this.Col1.Width = 270;
+            this.Col1.Width = 265;
             // 
             // Col2
             // 
             this.Col2.Text = "AppName";
-            this.Col2.Width = 150;
+            this.Col2.Width = 180;
             // 
             // Col3
             // 
             this.Col3.Text = "Version";
-            this.Col3.Width = 270;
+            this.Col3.Width = 160;
             // 
             // Col4
             // 
             this.Col4.Text = "Size";
-            this.Col4.Width = 140;
+            this.Col4.Width = 130;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Update";
+            this.columnHeader4.Width = 65;
             // 
             // pnl_home
             // 
@@ -554,11 +562,27 @@
             // pnl_notInstalled
             // 
             this.pnl_notInstalled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnl_notInstalled.Controls.Add(this.btn_notInstalledInstall);
             this.pnl_notInstalled.Controls.Add(this.lv_notInstalled);
             this.pnl_notInstalled.Location = new System.Drawing.Point(113, 0);
             this.pnl_notInstalled.Name = "pnl_notInstalled";
             this.pnl_notInstalled.Size = new System.Drawing.Size(858, 520);
             this.pnl_notInstalled.TabIndex = 3;
+            // 
+            // btn_notInstalledInstall
+            // 
+            this.btn_notInstalledInstall.BackColor = System.Drawing.Color.White;
+            this.btn_notInstalledInstall.FlatAppearance.BorderSize = 2;
+            this.btn_notInstalledInstall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_notInstalledInstall.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_notInstalledInstall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_notInstalledInstall.Location = new System.Drawing.Point(731, 12);
+            this.btn_notInstalledInstall.Name = "btn_notInstalledInstall";
+            this.btn_notInstalledInstall.Size = new System.Drawing.Size(114, 34);
+            this.btn_notInstalledInstall.TabIndex = 1;
+            this.btn_notInstalledInstall.Text = "Install";
+            this.btn_notInstalledInstall.UseVisualStyleBackColor = false;
+            this.btn_notInstalledInstall.Click += new System.EventHandler(this.btn_notInstalledInstall_Click);
             // 
             // lv_notInstalled
             // 
@@ -578,6 +602,7 @@
             this.lv_notInstalled.TabIndex = 0;
             this.lv_notInstalled.UseCompatibleStateImageBehavior = false;
             this.lv_notInstalled.View = System.Windows.Forms.View.Details;
+            this.lv_notInstalled.SelectedIndexChanged += new System.EventHandler(this.lv_notInstalled_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -652,13 +677,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(964, 670);
-            this.Controls.Add(this.pnl_home);
             this.Controls.Add(this.pnl_notInstalled);
+            this.Controls.Add(this.pnl_home);
             this.Controls.Add(this.pnl_allgames);
             this.Controls.Add(this.rtb_console);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.pnl_installed);
             this.Controls.Add(this.pnl_forceLaunch);
+            this.Controls.Add(this.pnl_installed);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -734,6 +759,8 @@
         private System.Windows.Forms.Button btn_homeBrowse;
         private System.Windows.Forms.TextBox tb_home_installLoc;
         private System.Windows.Forms.FolderBrowserDialog folder_chooseInstallLoc;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button btn_notInstalledInstall;
     }
 }
 

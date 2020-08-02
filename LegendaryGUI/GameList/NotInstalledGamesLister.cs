@@ -22,19 +22,7 @@ namespace LegendaryGUI.GameList
             this.lv = lv;
         }
 
-        public void RefreshListing(bool forceRefresh)
-        {
-            if (Games == null || forceRefresh)
-            {
-                SpawnInNewThread();
-            }
-            else
-            {
-                ListWriter();
-            }
-        }
-
-        public void SpawnInNewThread()
+        public void RefreshListing()
         {
             Thread thread = new Thread(Calculate);
             thread.Start();
@@ -47,7 +35,9 @@ namespace LegendaryGUI.GameList
                 LaunchProcess proc = new LaunchProcess(all.args);
                 proc.ReturnFunc = all.Parser;
                 proc.WaitOnExit = true;
-                proc.Run();
+
+                if (proc.Run() < 0)
+                    return;
             }
 
             if (installed.Games == null)
@@ -55,7 +45,9 @@ namespace LegendaryGUI.GameList
                 LaunchProcess proc = new LaunchProcess(installed.args);
                 proc.ReturnFunc = installed.Parser;
                 proc.WaitOnExit = true;
-                proc.Run();
+
+                if (proc.Run() < 0)
+                    return;
             }
 
             Games = new List<GameInfo>();

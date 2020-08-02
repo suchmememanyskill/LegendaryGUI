@@ -39,6 +39,10 @@ namespace LegendaryGUI.GameList
                 {
                     Games.Add(new GameInfo(line));
                 }
+                if (line.StartsWith("  -> Update available!"))
+                {
+                    Games.Last().Update = true;
+                }
             }
 
             RefreshListing(false);
