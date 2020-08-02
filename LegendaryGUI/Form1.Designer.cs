@@ -43,8 +43,14 @@
             this.Col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Col4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnl_home = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_homeBrowse = new System.Windows.Forms.Button();
+            this.tb_home_installLoc = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btn_home_save = new System.Windows.Forms.Button();
             this.btn_home_verInfo = new System.Windows.Forms.Button();
             this.pnl_forceLaunch = new System.Windows.Forms.Panel();
+            this.btn_forceLaunch_browse = new System.Windows.Forms.Button();
             this.btn_forceLaunch_launch = new System.Windows.Forms.Button();
             this.btn_forceLaunch_remove = new System.Windows.Forms.Button();
             this.lbl_forceLaunch_status = new System.Windows.Forms.Label();
@@ -76,10 +82,11 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.file_chooseForceLaunchTarget = new System.Windows.Forms.OpenFileDialog();
-            this.btn_forceLaunch_browse = new System.Windows.Forms.Button();
+            this.folder_chooseInstallLoc = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1.SuspendLayout();
             this.pnl_installed.SuspendLayout();
             this.pnl_home.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.pnl_forceLaunch.SuspendLayout();
             this.pnl_notInstalled.SuspendLayout();
             this.pnl_allgames.SuspendLayout();
@@ -232,18 +239,77 @@
             // pnl_home
             // 
             this.pnl_home.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_home.Controls.Add(this.groupBox1);
             this.pnl_home.Controls.Add(this.btn_home_verInfo);
             this.pnl_home.Location = new System.Drawing.Point(113, 0);
             this.pnl_home.Name = "pnl_home";
             this.pnl_home.Size = new System.Drawing.Size(858, 520);
             this.pnl_home.TabIndex = 3;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btn_homeBrowse);
+            this.groupBox1.Controls.Add(this.tb_home_installLoc);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.btn_home_save);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(261, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(578, 504);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Settings";
+            // 
+            // btn_homeBrowse
+            // 
+            this.btn_homeBrowse.BackColor = System.Drawing.Color.White;
+            this.btn_homeBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_homeBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_homeBrowse.ForeColor = System.Drawing.Color.Black;
+            this.btn_homeBrowse.Location = new System.Drawing.Point(380, 61);
+            this.btn_homeBrowse.Name = "btn_homeBrowse";
+            this.btn_homeBrowse.Size = new System.Drawing.Size(75, 26);
+            this.btn_homeBrowse.TabIndex = 3;
+            this.btn_homeBrowse.Text = "Browse";
+            this.btn_homeBrowse.UseVisualStyleBackColor = false;
+            this.btn_homeBrowse.Click += new System.EventHandler(this.btn_homeBrowse_Click);
+            // 
+            // tb_home_installLoc
+            // 
+            this.tb_home_installLoc.Location = new System.Drawing.Point(10, 61);
+            this.tb_home_installLoc.Name = "tb_home_installLoc";
+            this.tb_home_installLoc.Size = new System.Drawing.Size(364, 26);
+            this.tb_home_installLoc.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.Location = new System.Drawing.Point(6, 35);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 19);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Install location:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_home_save
+            // 
+            this.btn_home_save.BackColor = System.Drawing.Color.Gray;
+            this.btn_home_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_home_save.Location = new System.Drawing.Point(492, 10);
+            this.btn_home_save.Name = "btn_home_save";
+            this.btn_home_save.Size = new System.Drawing.Size(86, 33);
+            this.btn_home_save.TabIndex = 0;
+            this.btn_home_save.Text = "Save";
+            this.btn_home_save.UseVisualStyleBackColor = false;
+            this.btn_home_save.Click += new System.EventHandler(this.btn_home_save_Click);
+            // 
             // btn_home_verInfo
             // 
             this.btn_home_verInfo.BackColor = System.Drawing.Color.White;
             this.btn_home_verInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_home_verInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_home_verInfo.Location = new System.Drawing.Point(4, 3);
+            this.btn_home_verInfo.Location = new System.Drawing.Point(7, 9);
             this.btn_home_verInfo.Name = "btn_home_verInfo";
             this.btn_home_verInfo.Size = new System.Drawing.Size(121, 31);
             this.btn_home_verInfo.TabIndex = 0;
@@ -274,6 +340,19 @@
             this.pnl_forceLaunch.Name = "pnl_forceLaunch";
             this.pnl_forceLaunch.Size = new System.Drawing.Size(858, 520);
             this.pnl_forceLaunch.TabIndex = 4;
+            // 
+            // btn_forceLaunch_browse
+            // 
+            this.btn_forceLaunch_browse.BackColor = System.Drawing.Color.White;
+            this.btn_forceLaunch_browse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_forceLaunch_browse.ForeColor = System.Drawing.Color.Black;
+            this.btn_forceLaunch_browse.Location = new System.Drawing.Point(261, 121);
+            this.btn_forceLaunch_browse.Name = "btn_forceLaunch_browse";
+            this.btn_forceLaunch_browse.Size = new System.Drawing.Size(57, 22);
+            this.btn_forceLaunch_browse.TabIndex = 16;
+            this.btn_forceLaunch_browse.Text = "Browse";
+            this.btn_forceLaunch_browse.UseVisualStyleBackColor = false;
+            this.btn_forceLaunch_browse.Click += new System.EventHandler(this.btn_forceLaunch_browse_Click);
             // 
             // btn_forceLaunch_launch
             // 
@@ -563,18 +642,9 @@
             this.file_chooseForceLaunchTarget.Title = "Choose a .exe";
             this.file_chooseForceLaunchTarget.FileOk += new System.ComponentModel.CancelEventHandler(this.file_chooseForceLaunchTarget_FileOk);
             // 
-            // btn_forceLaunch_browse
+            // folder_chooseInstallLoc
             // 
-            this.btn_forceLaunch_browse.BackColor = System.Drawing.Color.White;
-            this.btn_forceLaunch_browse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_forceLaunch_browse.ForeColor = System.Drawing.Color.Black;
-            this.btn_forceLaunch_browse.Location = new System.Drawing.Point(261, 121);
-            this.btn_forceLaunch_browse.Name = "btn_forceLaunch_browse";
-            this.btn_forceLaunch_browse.Size = new System.Drawing.Size(57, 22);
-            this.btn_forceLaunch_browse.TabIndex = 16;
-            this.btn_forceLaunch_browse.Text = "Browse";
-            this.btn_forceLaunch_browse.UseVisualStyleBackColor = false;
-            this.btn_forceLaunch_browse.Click += new System.EventHandler(this.btn_forceLaunch_browse_Click);
+            this.folder_chooseInstallLoc.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
             // Form1
             // 
@@ -582,13 +652,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(964, 670);
-            this.Controls.Add(this.pnl_forceLaunch);
+            this.Controls.Add(this.pnl_home);
             this.Controls.Add(this.pnl_notInstalled);
             this.Controls.Add(this.pnl_allgames);
             this.Controls.Add(this.rtb_console);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.pnl_home);
             this.Controls.Add(this.pnl_installed);
+            this.Controls.Add(this.pnl_forceLaunch);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -597,6 +667,8 @@
             this.menuStrip1.PerformLayout();
             this.pnl_installed.ResumeLayout(false);
             this.pnl_home.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.pnl_forceLaunch.ResumeLayout(false);
             this.pnl_forceLaunch.PerformLayout();
             this.pnl_notInstalled.ResumeLayout(false);
@@ -656,6 +728,12 @@
         private System.Windows.Forms.Button btn_forceLaunch_remove;
         private System.Windows.Forms.OpenFileDialog file_chooseForceLaunchTarget;
         private System.Windows.Forms.Button btn_forceLaunch_browse;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_home_save;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btn_homeBrowse;
+        private System.Windows.Forms.TextBox tb_home_installLoc;
+        private System.Windows.Forms.FolderBrowserDialog folder_chooseInstallLoc;
     }
 }
 

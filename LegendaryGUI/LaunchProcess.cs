@@ -38,13 +38,13 @@ namespace LegendaryGUI
             return isRunning;
         }
 
-        public void Run()
+        public int Run()
         {
             if (CheckRunStatus())
             {
                 MessageBox.Show("Current thread is busy!");
                 HasProcessFinished = true;
-                return;
+                return -1;
             }
 
             isRunning = true;
@@ -66,6 +66,8 @@ namespace LegendaryGUI
 
             if (WaitOnExit)
                 runThread.Join();
+
+            return 0;
         }
 
         private void GetErrOutput()

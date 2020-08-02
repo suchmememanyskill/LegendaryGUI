@@ -12,10 +12,12 @@ namespace LegendaryGUI
     public class ConfigFile
     {
         public List<ForceGameInfo> ForceLaunchGames { get; set; }
+        public string InstallFolder { get; set; }
 
         public ConfigFile()
         {
             ForceLaunchGames = new List<ForceGameInfo>();
+            InstallFolder = "";
         }
     }
     public static class Config

@@ -35,6 +35,8 @@ namespace LegendaryGUI
             allGamesLister = new AllGamesLister(new ListViewSafeWriter(lv_allGames));
             installedGamesLister = new InstalledGamesLister(new ListViewSafeWriter(installed_lv));
             notInstalledGamesLister = new NotInstalledGamesLister(allGamesLister, installedGamesLister, new ListViewSafeWriter(lv_notInstalled));
+
+            tb_home_installLoc.Text = Config.config.InstallFolder;
         }
 
         private void HideAllPanels()
@@ -72,6 +74,7 @@ namespace LegendaryGUI
             HideAllPanels();
             pnl_installed.Show();
             mi_Installed.BackColor = Color.FromKnownColor(KnownColor.Highlight);
+            btn_installed_launch.Enabled = false;
 
             installedGamesLister.RefreshListing(false);
         }
@@ -122,6 +125,8 @@ namespace LegendaryGUI
             HideAllPanels();
             pnl_forceLaunch.Show();
             mi_forceLaunch.BackColor = Color.FromKnownColor(KnownColor.Highlight);
+            btn_forceLaunch_launch.Enabled = false;
+            btn_forceLaunch_remove.Enabled = false;
 
             RefreshForceLaunch();
         }
@@ -217,6 +222,22 @@ namespace LegendaryGUI
         private void btn_forceLaunch_browse_Click(object sender, EventArgs e)
         {
             file_chooseForceLaunchTarget.ShowDialog();
+        }
+
+        private void btn_homeBrowse_Click(object sender, EventArgs e)
+        {
+            folder_chooseInstallLoc.ShowDialog();
+            if (!string.IsNullOrEmpty(folder_chooseInstallLoc.SelectedPath))
+            {
+                tb_home_installLoc.Text = folder_chooseInstallLoc.SelectedPath;
+            }
+        }
+
+        private void btn_home_save_Click(object sender, EventArgs e)
+        {
+            Config.config.InstallFolder = tb_home_installLoc.Text;
+            Config.Write();
+            FormConsole.WriteLine("<Configuration saved!>");
         }
     }
 }
