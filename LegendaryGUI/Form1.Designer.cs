@@ -685,6 +685,7 @@
             this.Controls.Add(this.pnl_forceLaunch);
             this.Controls.Add(this.pnl_installed);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "LegendaryGUI";
